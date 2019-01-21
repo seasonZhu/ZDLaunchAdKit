@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61CD691521105A8B00D7A208 /* SwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CD691421105A8B00D7A208 /* SwiftMD5.swift */; };
+		61CD691D211144E900D7A208 /* ad_douyin.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61CD691C211144E900D7A208 /* ad_douyin.mp4 */; };
+		61CD691F211152DB00D7A208 /* AppDelegate+LaunchAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CD691E211152DB00D7A208 /* AppDelegate+LaunchAd.swift */; };
+		61EFF78521095C440066F816 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF78421095C440066F816 /* AppDelegate.swift */; };
+		61EFF78721095C440066F816 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF78621095C440066F816 /* ViewController.swift */; };
+		61EFF78A21095C440066F816 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF78821095C440066F816 /* Main.storyboard */; };
+		61EFF78C21095C450066F816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF78B21095C450066F816 /* Assets.xcassets */; };
+		61EFF78F21095C450066F816 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF78D21095C450066F816 /* LaunchScreen.storyboard */; };
+		61EFF79C21095D9C0066F816 /* UserDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF79B21095D9C0066F816 /* UserDefine.swift */; };
+		61EFF79E210967160066F816 /* ZDLaunchAdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF79D210967160066F816 /* ZDLaunchAdButton.swift */; };
+		61EFF7A62109B5370066F816 /* ZDLaunchAdConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7A52109B5370066F816 /* ZDLaunchAdConfiguration.swift */; };
+		61EFF7A82109B8680066F816 /* ZDLaunchAdImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7A72109B8680066F816 /* ZDLaunchAdImageManager.swift */; };
+		61EFF7AA2109BAB80066F816 /* ZDLaunchAdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7A92109BAB80066F816 /* ZDLaunchAdController.swift */; };
+		61EFF7AC2109BBF30066F816 /* ZDLaunchAdDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7AB2109BBF30066F816 /* ZDLaunchAdDownloader.swift */; };
+		61EFF7AE2109CF970066F816 /* ZDLaunchAdDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7AD2109CF970066F816 /* ZDLaunchAdDownloadManager.swift */; };
+		61EFF7B0210ABFA00066F816 /* ZDLaunchAdCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7AF210ABFA00066F816 /* ZDLaunchAdCacheManager.swift */; };
+		61EFF7B2210B00D30066F816 /* ZDLaunchAdVideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7B1210B00D30066F816 /* ZDLaunchAdVideoManager.swift */; };
+		61EFF7B4210B09310066F816 /* ZDLaunchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7B3210B09310066F816 /* ZDLaunchImageView.swift */; };
+		61EFF7B8210B1FC30066F816 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7B7210B1FC30066F816 /* UIImage+Gif.swift */; };
+		61EFF7BA210B238D0066F816 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7B9210B238D0066F816 /* UIImageView+Extension.swift */; };
+		61EFF7BC210E9F910066F816 /* ZDLaunchAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7BB210E9F910066F816 /* ZDLaunchAdView.swift */; };
+		61EFF7BE210EB3580066F816 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7BD210EB3570066F816 /* Extensions.swift */; };
+		61EFF7C0210EB5070066F816 /* ZDLaunchAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EFF7BF210EB5070066F816 /* ZDLaunchAd.swift */; };
+		61EFF7CF210F11930066F816 /* image0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7C4210F11930066F816 /* image0.jpg */; };
+		61EFF7D0210F11930066F816 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7C5210F11930066F816 /* image1.jpg */; };
+		61EFF7D1210F11930066F816 /* image11.gif in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7C6210F11930066F816 /* image11.gif */; };
+		61EFF7D2210F11930066F816 /* image12.gif in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7C7210F11930066F816 /* image12.gif */; };
+		61EFF7D3210F11930066F816 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7C8210F11930066F816 /* image2.jpg */; };
+		61EFF7D4210F11930066F816 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7C9210F11930066F816 /* image3.jpg */; };
+		61EFF7D5210F11930066F816 /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7CA210F11930066F816 /* image4.jpg */; };
+		61EFF7D6210F11930066F816 /* LaunchImageAd.json in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7CB210F11930066F816 /* LaunchImageAd.json */; };
+		61EFF7D7210F11930066F816 /* LaunchVideoAd.json in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7CC210F11930066F816 /* LaunchVideoAd.json */; };
+		61EFF7D8210F11930066F816 /* video0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7CD210F11930066F816 /* video0.mp4 */; };
+		61EFF7D9210F11930066F816 /* video1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61EFF7CE210F11930066F816 /* video1.mp4 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		61763B7B21392161001BE464 /* ZDLaunchAdDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZDLaunchAdDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		61CD691421105A8B00D7A208 /* SwiftMD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMD5.swift; sourceTree = "<group>"; };
+		61CD691C211144E900D7A208 /* ad_douyin.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ad_douyin.mp4; sourceTree = "<group>"; };
+		61CD691E211152DB00D7A208 /* AppDelegate+LaunchAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LaunchAd.swift"; sourceTree = "<group>"; };
+		61EFF78121095C440066F816 /* ZDLaunchAdDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDLaunchAdDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61EFF78421095C440066F816 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		61EFF78621095C440066F816 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		61EFF78921095C440066F816 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		61EFF78B21095C450066F816 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61EFF78E21095C450066F816 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		61EFF79021095C450066F816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61EFF79B21095D9C0066F816 /* UserDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefine.swift; sourceTree = "<group>"; };
+		61EFF79D210967160066F816 /* ZDLaunchAdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdButton.swift; sourceTree = "<group>"; };
+		61EFF7A52109B5370066F816 /* ZDLaunchAdConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdConfiguration.swift; sourceTree = "<group>"; };
+		61EFF7A72109B8680066F816 /* ZDLaunchAdImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdImageManager.swift; sourceTree = "<group>"; };
+		61EFF7A92109BAB80066F816 /* ZDLaunchAdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdController.swift; sourceTree = "<group>"; };
+		61EFF7AB2109BBF30066F816 /* ZDLaunchAdDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdDownloader.swift; sourceTree = "<group>"; };
+		61EFF7AD2109CF970066F816 /* ZDLaunchAdDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdDownloadManager.swift; sourceTree = "<group>"; };
+		61EFF7AF210ABFA00066F816 /* ZDLaunchAdCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdCacheManager.swift; sourceTree = "<group>"; };
+		61EFF7B1210B00D30066F816 /* ZDLaunchAdVideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdVideoManager.swift; sourceTree = "<group>"; };
+		61EFF7B3210B09310066F816 /* ZDLaunchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchImageView.swift; sourceTree = "<group>"; };
+		61EFF7B7210B1FC30066F816 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		61EFF7B9210B238D0066F816 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		61EFF7BB210E9F910066F816 /* ZDLaunchAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAdView.swift; sourceTree = "<group>"; };
+		61EFF7BD210EB3570066F816 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		61EFF7BF210EB5070066F816 /* ZDLaunchAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDLaunchAd.swift; sourceTree = "<group>"; };
+		61EFF7C4210F11930066F816 /* image0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image0.jpg; sourceTree = "<group>"; };
+		61EFF7C5210F11930066F816 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
+		61EFF7C6210F11930066F816 /* image11.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image11.gif; sourceTree = "<group>"; };
+		61EFF7C7210F11930066F816 /* image12.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image12.gif; sourceTree = "<group>"; };
+		61EFF7C8210F11930066F816 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		61EFF7C9210F11930066F816 /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
+		61EFF7CA210F11930066F816 /* image4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image4.jpg; sourceTree = "<group>"; };
+		61EFF7CB210F11930066F816 /* LaunchImageAd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LaunchImageAd.json; sourceTree = "<group>"; };
+		61EFF7CC210F11930066F816 /* LaunchVideoAd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LaunchVideoAd.json; sourceTree = "<group>"; };
+		61EFF7CD210F11930066F816 /* video0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video0.mp4; sourceTree = "<group>"; };
+		61EFF7CE210F11930066F816 /* video1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video1.mp4; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61EFF77E21095C440066F816 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61EFF77821095C440066F816 = {
+			isa = PBXGroup;
+			children = (
+				61EFF78321095C440066F816 /* ZDLaunchAdDemo */,
+				61EFF78221095C440066F816 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61EFF78221095C440066F816 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61EFF78121095C440066F816 /* ZDLaunchAdDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61EFF78321095C440066F816 /* ZDLaunchAdDemo */ = {
+			isa = PBXGroup;
+			children = (
+				61EFF7C3210F11930066F816 /* Source */,
+				61EFF79621095C5E0066F816 /* ZDLaunchAdKit */,
+				61EFF78421095C440066F816 /* AppDelegate.swift */,
+				61CD691E211152DB00D7A208 /* AppDelegate+LaunchAd.swift */,
+				61EFF78621095C440066F816 /* ViewController.swift */,
+				61763B7B21392161001BE464 /* ZDLaunchAdDemo-Bridging-Header.h */,
+				61EFF78821095C440066F816 /* Main.storyboard */,
+				61EFF78B21095C450066F816 /* Assets.xcassets */,
+				61EFF78D21095C450066F816 /* LaunchScreen.storyboard */,
+				61EFF79021095C450066F816 /* Info.plist */,
+			);
+			path = ZDLaunchAdDemo;
+			sourceTree = "<group>";
+		};
+		61EFF79621095C5E0066F816 /* ZDLaunchAdKit */ = {
+			isa = PBXGroup;
+			children = (
+				61EFF7BF210EB5070066F816 /* ZDLaunchAd.swift */,
+				61EFF7BD210EB3570066F816 /* Extensions.swift */,
+				61EFF79B21095D9C0066F816 /* UserDefine.swift */,
+				61EFF7B9210B238D0066F816 /* UIImageView+Extension.swift */,
+				61EFF79D210967160066F816 /* ZDLaunchAdButton.swift */,
+				61EFF7A92109BAB80066F816 /* ZDLaunchAdController.swift */,
+				61EFF7A52109B5370066F816 /* ZDLaunchAdConfiguration.swift */,
+				61EFF7AF210ABFA00066F816 /* ZDLaunchAdCacheManager.swift */,
+				61EFF7AB2109BBF30066F816 /* ZDLaunchAdDownloader.swift */,
+				61EFF7AD2109CF970066F816 /* ZDLaunchAdDownloadManager.swift */,
+				61EFF7A72109B8680066F816 /* ZDLaunchAdImageManager.swift */,
+				61EFF7B1210B00D30066F816 /* ZDLaunchAdVideoManager.swift */,
+				61EFF7B3210B09310066F816 /* ZDLaunchImageView.swift */,
+				61EFF7BB210E9F910066F816 /* ZDLaunchAdView.swift */,
+				61EFF7B7210B1FC30066F816 /* UIImage+Gif.swift */,
+				61CD691421105A8B00D7A208 /* SwiftMD5.swift */,
+			);
+			path = ZDLaunchAdKit;
+			sourceTree = "<group>";
+		};
+		61EFF7C3210F11930066F816 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				61EFF7C4210F11930066F816 /* image0.jpg */,
+				61EFF7C5210F11930066F816 /* image1.jpg */,
+				61EFF7C6210F11930066F816 /* image11.gif */,
+				61EFF7C7210F11930066F816 /* image12.gif */,
+				61EFF7C8210F11930066F816 /* image2.jpg */,
+				61EFF7C9210F11930066F816 /* image3.jpg */,
+				61EFF7CA210F11930066F816 /* image4.jpg */,
+				61EFF7CB210F11930066F816 /* LaunchImageAd.json */,
+				61EFF7CC210F11930066F816 /* LaunchVideoAd.json */,
+				61EFF7CD210F11930066F816 /* video0.mp4 */,
+				61EFF7CE210F11930066F816 /* video1.mp4 */,
+				61CD691C211144E900D7A208 /* ad_douyin.mp4 */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61EFF78021095C440066F816 /* ZDLaunchAdDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61EFF79321095C450066F816 /* Build configuration list for PBXNativeTarget "ZDLaunchAdDemo" */;
+			buildPhases = (
+				61EFF77D21095C440066F816 /* Sources */,
+				61EFF77E21095C440066F816 /* Frameworks */,
+				61EFF77F21095C440066F816 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZDLaunchAdDemo;
+			productName = ZDLaunchAdDemo;
+			productReference = 61EFF78121095C440066F816 /* ZDLaunchAdDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61EFF77921095C440066F816 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = season;
+				TargetAttributes = {
+					61EFF78021095C440066F816 = {
+						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
+					};
+				};
+			};
+			buildConfigurationList = 61EFF77C21095C440066F816 /* Build configuration list for PBXProject "ZDLaunchAdDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61EFF77821095C440066F816;
+			productRefGroup = 61EFF78221095C440066F816 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61EFF78021095C440066F816 /* ZDLaunchAdDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61EFF77F21095C440066F816 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EFF7D1210F11930066F816 /* image11.gif in Resources */,
+				61EFF7D6210F11930066F816 /* LaunchImageAd.json in Resources */,
+				61EFF7D8210F11930066F816 /* video0.mp4 in Resources */,
+				61EFF7D9210F11930066F816 /* video1.mp4 in Resources */,
+				61EFF7D5210F11930066F816 /* image4.jpg in Resources */,
+				61EFF7D4210F11930066F816 /* image3.jpg in Resources */,
+				61EFF78F21095C450066F816 /* LaunchScreen.storyboard in Resources */,
+				61CD691D211144E900D7A208 /* ad_douyin.mp4 in Resources */,
+				61EFF7CF210F11930066F816 /* image0.jpg in Resources */,
+				61EFF7D3210F11930066F816 /* image2.jpg in Resources */,
+				61EFF7D7210F11930066F816 /* LaunchVideoAd.json in Resources */,
+				61EFF78C21095C450066F816 /* Assets.xcassets in Resources */,
+				61EFF7D2210F11930066F816 /* image12.gif in Resources */,
+				61EFF78A21095C440066F816 /* Main.storyboard in Resources */,
+				61EFF7D0210F11930066F816 /* image1.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61EFF77D21095C440066F816 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EFF7AC2109BBF30066F816 /* ZDLaunchAdDownloader.swift in Sources */,
+				61CD691F211152DB00D7A208 /* AppDelegate+LaunchAd.swift in Sources */,
+				61EFF7BE210EB3580066F816 /* Extensions.swift in Sources */,
+				61EFF7AA2109BAB80066F816 /* ZDLaunchAdController.swift in Sources */,
+				61EFF7A82109B8680066F816 /* ZDLaunchAdImageManager.swift in Sources */,
+				61EFF79C21095D9C0066F816 /* UserDefine.swift in Sources */,
+				61EFF7AE2109CF970066F816 /* ZDLaunchAdDownloadManager.swift in Sources */,
+				61EFF79E210967160066F816 /* ZDLaunchAdButton.swift in Sources */,
+				61EFF7B2210B00D30066F816 /* ZDLaunchAdVideoManager.swift in Sources */,
+				61EFF7B4210B09310066F816 /* ZDLaunchImageView.swift in Sources */,
+				61EFF7BA210B238D0066F816 /* UIImageView+Extension.swift in Sources */,
+				61EFF7B0210ABFA00066F816 /* ZDLaunchAdCacheManager.swift in Sources */,
+				61EFF78721095C440066F816 /* ViewController.swift in Sources */,
+				61EFF7A62109B5370066F816 /* ZDLaunchAdConfiguration.swift in Sources */,
+				61EFF7B8210B1FC30066F816 /* UIImage+Gif.swift in Sources */,
+				61EFF7BC210E9F910066F816 /* ZDLaunchAdView.swift in Sources */,
+				61EFF78521095C440066F816 /* AppDelegate.swift in Sources */,
+				61CD691521105A8B00D7A208 /* SwiftMD5.swift in Sources */,
+				61EFF7C0210EB5070066F816 /* ZDLaunchAd.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		61EFF78821095C440066F816 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61EFF78921095C440066F816 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		61EFF78D21095C450066F816 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61EFF78E21095C450066F816 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61EFF79121095C450066F816 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61EFF79221095C450066F816 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61EFF79421095C450066F816 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6Q5RKSB5N;
+				INFOPLIST_FILE = ZDLaunchAdDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.season.zhu.ZDLaunchAdDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZDLaunchAdDemo/ZDLaunchAdDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		61EFF79521095C450066F816 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6Q5RKSB5N;
+				INFOPLIST_FILE = ZDLaunchAdDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.season.zhu.ZDLaunchAdDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZDLaunchAdDemo/ZDLaunchAdDemo-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61EFF77C21095C440066F816 /* Build configuration list for PBXProject "ZDLaunchAdDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61EFF79121095C450066F816 /* Debug */,
+				61EFF79221095C450066F816 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61EFF79321095C450066F816 /* Build configuration list for PBXNativeTarget "ZDLaunchAdDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61EFF79421095C450066F816 /* Debug */,
+				61EFF79521095C450066F816 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61EFF77921095C440066F816 /* Project object */;
+}
