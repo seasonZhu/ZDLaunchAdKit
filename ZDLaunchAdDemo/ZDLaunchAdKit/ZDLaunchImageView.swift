@@ -18,6 +18,11 @@ public enum SourceType {
 
 /// 获取App启动图View
 class ZDLaunchImageView: UIImageView {
+    
+    private enum PictureType: String {
+        case portrait = "Portrait"
+        case landscape = "Landscape"
+    }
 
     /// 便利构造函数
     ///
@@ -38,13 +43,11 @@ class ZDLaunchImageView: UIImageView {
     ///
     /// - Returns: 启动图
     private func imageFromeLaunchImage() -> UIImage? {
-        let imageP = launchImage(type: "Portrait")
-        if imageP != nil {
+        if let imageP = launchImage(type: .portrait) {
             return imageP
         }
         
-        let imageL = launchImage(type: "Landscape")
-        if imageL != nil {
+        if let imageL = launchImage(type: .landscape) {
             return imageL
         }
         
@@ -80,9 +83,16 @@ class ZDLaunchImageView: UIImageView {
     private func launchImage(frome view: UIView) -> UIImage? {
         let size = view.bounds.size
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        
+        view.layer.render(in: context)
         let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        
         return image
     }
     
@@ -90,9 +100,9 @@ class ZDLaunchImageView: UIImageView {
     ///
     /// - Parameter type: 类型
     /// - Returns: 图片
-    private func launchImage(type: String) -> UIImage? {
+    private func launchImage(type: PictureType) -> UIImage? {
         let size = UIScreen.main.bounds.size
-        let viewOrientation = type
+        let viewOrientation = type.rawValue
         guard let imageDicts = Bundle.main.infoDictionary?["UILaunchImages"] as? [[String: String]] else {
             return nil
         }

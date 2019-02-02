@@ -201,18 +201,18 @@ extension UIImage {
 
 }
 
-/*---------------------这是我写的---------------------*/
+/*---------------------这是我写的,更多的在SeasonSwiftExtension---------------------*/
 
 // MARK: - 获取gif的配置信息
 extension UIImage {
     
-    typealias GifInfoCallback = (_ images: [UIImage]?, _ duration: TimeInterval, _ times: [TimeInterval]) -> ()
+    typealias GifInfoCallback = (_ images: [UIImage]?, _ duration: TimeInterval, _ times: [TimeInterval]) -> Void
     
     /// 通过data获取gif的图片数组以及gif的播放时间
     ///
     /// - Parameter data: 数据
     /// - Returns: 元组 图片数组 与gif的播放时间
-    class func getGifImageInfo(data: Data) -> (images: [UIImage]?, duration: TimeInterval, times: [TimeInterval]) {
+    static func getGifImageInfo(data: Data) -> (images: [UIImage]?, duration: TimeInterval, times: [TimeInterval]) {
         guard let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else {
             return (nil, 0, [])
         }
@@ -242,7 +242,7 @@ extension UIImage {
         return (images, duration, times)
     }
     
-    class func getGifImageInfo(frome url: URL) -> (images: [UIImage]?, duration: TimeInterval, times: [TimeInterval]) {
+    static func getGifImageInfo(frome url: URL) -> (images: [UIImage]?, duration: TimeInterval, times: [TimeInterval]) {
         guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) else {
             return (nil, 0, [])
         }
@@ -271,7 +271,7 @@ extension UIImage {
         return (images, duration, times)
     }
     
-    class func asyncGetGifImagInfo(data: Data, gifInfoCallback: @escaping GifInfoCallback) {
+    static func asyncGetGifImagInfo(data: Data, gifInfoCallback: @escaping GifInfoCallback) {
         DispatchQueue.global().async {
             let gifInfo = getGifImageInfo(data: data)
             DispatchQueue.main.async {
@@ -280,7 +280,7 @@ extension UIImage {
         }
     }
     
-    class func asyncGetGifImagInfo(frome url: URL, gifInfoCallback: @escaping GifInfoCallback) {
+    static func asyncGetGifImagInfo(frome url: URL, gifInfoCallback: @escaping GifInfoCallback) {
         DispatchQueue.global().async {
             let gifInfo = getGifImageInfo(frome: url)
             DispatchQueue.main.async {
@@ -299,7 +299,7 @@ extension UIImageView {
     ///   - data: 数据
     ///   - repeatCount: 播发重复次数 为0的时候为循环播发
     ///   - runable: 播放完成的回调 注意repeatCount > 0 的时候才会执行
-    func playGif(data: Data, repeatCount: Int = 0, runable: (() -> ())? = nil) {
+    func playGif(data: Data, repeatCount: Int = 0, runable: (() -> Void)? = nil) {
         UIImage.asyncGetGifImagInfo(data: data) { (images, duration, _) in
             self.animationImages = images
             self.animationDuration = duration
@@ -322,7 +322,13 @@ extension UIImageView {
         }
     }
     
-    func playGif(frome url: URL, repeatCount: Int = 0, runable: (() -> ())? = nil) {
+    /// 播发GIF并且监听播发完成
+    ///
+    /// - Parameters:
+    ///   - data: 图片网址
+    ///   - repeatCount: 播发重复次数 为0的时候为循环播发
+    ///   - runable: 播放完成的回调 注意repeatCount > 0 的时候才会执行
+    func playGif(frome url: URL, repeatCount: Int = 0, runable: (() -> Void)? = nil) {
         UIImage.asyncGetGifImagInfo(frome: url) { (images, duration, _) in
             self.animationImages = images
             self.animationDuration = duration

@@ -138,7 +138,7 @@ extension ZDLaunchAdButton {
         let roundTimer = DispatchSource.makeTimerSource(flags: [], queue: queue)
         self.roundTimer = roundTimer
         roundTimer.schedule(wallDeadline: .now(), repeating: period)
-        roundTimer.setEventHandler(handler: {
+        roundTimer.setEventHandler {
             DispatchQueue.main.async {
                 if roundDuration <= 0 {
                     self.roundLayer.strokeStart = 1
@@ -149,7 +149,7 @@ extension ZDLaunchAdButton {
                 self.roundLayer.strokeStart += 1 / (duration / CGFloat(period))
                 roundDuration -= CGFloat(period)
             }
-        })
+        }
         roundTimer.resume()
     }
 }

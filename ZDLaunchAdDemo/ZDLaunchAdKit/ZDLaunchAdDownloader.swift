@@ -8,10 +8,10 @@
 
 import UIKit
 
-typealias DownloadImageCompletedCallback = (_ image: UIImage?, _ data: Data?, _ error: Error?) -> ()
-typealias DownloadVideoCompletedCallback = (_ location: URL?, _ error: Error?) -> ()
-typealias DownloadProgressCallback = (_ total: Int64, _ current: Int64) -> ()
-public typealias BatchDownLoadAndCacheCompletedCallback = (_ completedArray: [[String: String]]) -> ()
+typealias DownloadImageCompletedCallback = (_ image: UIImage?, _ data: Data?, _ error: Error?) -> Void
+typealias DownloadVideoCompletedCallback = (_ location: URL?, _ error: Error?) -> Void
+typealias DownloadProgressCallback = (_ total: Int64, _ current: Int64) -> Void
+public typealias BatchDownLoadAndCacheCompletedCallback = (_ completedArray: [[String: String]]) -> Void
 
 /// 下载协议
 protocol ZDLaunchAdDownloaderDelegate: class {
@@ -99,9 +99,12 @@ extension ZDLaunchAdImageDownloader: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         print("didCompleteWithError: \(String(describing: error))")
         
-        DispatchQueue.main.async {
-            self.completedCallback?(nil, nil, error)
-            self.completedCallback = nil
+        // 有错误才进行回调,其实成功的时候 didFinishDownloadingTo 和这个方法都是会调用的Finis在前 这个在后,为了避免两次回调,成功的时候 这个代理的回调没有一次,所以做了一次防护
+        if let _ = error {
+            DispatchQueue.main.async {
+                self.completedCallback?(nil, nil, error)
+                self.completedCallback = nil
+            }
         }
     }
 }
@@ -173,10 +176,11 @@ extension ZDLaunchAdVideoDownloader: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         print("didCompleteWithError: \(String(describing: error))")
-        
-        DispatchQueue.main.async {
-            self.completedCallback?(nil, error)
-            self.completedCallback = nil
+        if let _ = error {
+            DispatchQueue.main.async {
+                self.completedCallback?(nil, error)
+                self.completedCallback = nil
+            }
         }
     }
 }

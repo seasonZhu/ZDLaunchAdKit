@@ -15,13 +15,13 @@ class ZDLaunchAdImageView: UIImageView {
     //MARK:- 属性设置
     
     //  手势回调
-    var tapCallback: ((CGPoint, UITapGestureRecognizer) -> ())?
+    var tapCallback: ((CGPoint, UITapGestureRecognizer) -> Void)?
     
     //MARK:- 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
-        isUserInteractionEnabled = true
         self.frame = frame
+        isUserInteractionEnabled = true
         layer.masksToBounds = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(_ :)))
         addGestureRecognizer(tap)
@@ -46,7 +46,7 @@ class ZDLaunchAdVideoView: UIImageView {
     private let status = "status"
     
     //  点击回调
-    var tapCallback: ((CGPoint, UITapGestureRecognizer) -> ())?
+    var tapCallback: ((CGPoint, UITapGestureRecognizer) -> Void)?
     
     //  视频的填满模式
     var videoGravity: AVLayerVideoGravity = AVLayerVideoGravity.resizeAspect {
@@ -81,7 +81,7 @@ class ZDLaunchAdVideoView: UIImageView {
             //  注册是否循环播放
             NotificationCenter.default.addObserver(self, selector: #selector(runLoopTheMovie(_ :)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     
-            try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [])
+            //try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [])
             try? AVAudioSession.sharedInstance().setActive(true)
             
             guard let avlayer = playerLayer else { return }
@@ -101,9 +101,9 @@ class ZDLaunchAdVideoView: UIImageView {
     //MARK:- 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
-        isUserInteractionEnabled = true
         self.frame = frame
-        self.backgroundColor = .clear
+        isUserInteractionEnabled = true
+        backgroundColor = .clear
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(_ :)))
         tap.delegate = self
         addGestureRecognizer(tap)

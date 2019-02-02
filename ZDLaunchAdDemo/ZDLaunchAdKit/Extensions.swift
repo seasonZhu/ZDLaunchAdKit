@@ -12,7 +12,7 @@ import Foundation
 extension String {
     
     /// 是否带有http或者https
-    var isUrlString: Bool {
+    var isUrl: Bool {
         return (hasPrefix("http") || hasPrefix("https")) ? true : false
     }
     

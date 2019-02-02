@@ -19,7 +19,7 @@ public protocol ZDLaunchAdDelegate: class {
     ///   - clickPoint: 点击位置
     func launchAd(launchAd: ZDLaunchAd, click model: Any?, clickPoint: CGPoint)
     
-    /// 图片本地读取/或下载完成回调
+    /// 图片本地读取或下载完成回调
     ///
     /// - Parameters:
     ///   - launchAd: launchAd
@@ -27,24 +27,23 @@ public protocol ZDLaunchAdDelegate: class {
     ///   - imageData: 读取/下载的数据
     func launchAd(launchAd: ZDLaunchAd, imageDownoadFinish image: UIImage?, imageData: Data?, url: URL?)
     
-
-    /// video本地读取/或下载完成回调
+    /// video本地读取或下载完成回调
     ///
     /// - Parameters:
     ///   - launchAd: launchAd
     ///   - path: 本地保存路径
     func launchAd(launchAd: ZDLaunchAd, videoDownloadFinish path: URL?)
     
-    /// 视频下载进度回调
+    /// 下载进度回调
     ///
     /// - Parameters:
     ///   - launchAd: launchAd
     ///   - progress: 下载进度
     ///   - total: 总大小
     ///   - current: 已下载大小
-    func launchAd(launchAd: ZDLaunchAd, videoDownloadProgress progress: Double, total: Int64, current: Int64)
+    func launchAd(launchAd: ZDLaunchAd, downloadProgress progress: Double, total: Int64, current: Int64)
     
-    /// 倒计时回调
+    /// 自定义倒计时回调
     ///
     /// - Parameters:
     ///   - launchAd: launchAd
@@ -52,7 +51,7 @@ public protocol ZDLaunchAdDelegate: class {
     ///   - duration: 倒计时时间
     func launchAd(launchAd: ZDLaunchAd, customSkipView: UIView?, duration: Int)
     
-    /// 第一次加载视频 仅下载视频不进行展示 展示默认的广告图
+    /// 第一次加载视频 仅下载视频不进行视频展示 展示默认的广告图
     ///
     /// - Parameter launchAd: launchAd
     func launchAdShowDefaultAdImage(launchAd: ZDLaunchAd)
@@ -78,8 +77,26 @@ public protocol ZDLaunchAdDelegate: class {
     func launchAd(launchAd: ZDLaunchAd, gifPlayFinish gifImage: UIImage?)
 }
 
-// MARK: - 暂时没有代理方法可选
-extension ZDLaunchAdDelegate {}
+// MARK: - 代理方法可选的默认实现
+extension ZDLaunchAdDelegate {
+    func launchAd(launchAd: ZDLaunchAd, click model: Any?, clickPoint: CGPoint) {}
+    
+    func launchAd(launchAd: ZDLaunchAd, imageDownoadFinish image: UIImage?, imageData: Data?, url: URL?) {}
+    
+    func launchAd(launchAd: ZDLaunchAd, videoDownloadFinish path: URL?) {}
+    
+    func launchAd(launchAd: ZDLaunchAd, downloadProgress progress: Double, total: Int64, current: Int64) {}
+    
+    func launchAd(launchAd: ZDLaunchAd, customSkipView: UIView?, duration: Int) {}
+    
+    func launchAdShowDefaultAdImage(launchAd: ZDLaunchAd) {}
+    
+    func launchAdShowFinish(launchAd: ZDLaunchAd) {}
+    
+    func launchAd(launchAd: ZDLaunchAd, imageView: UIImageView, url: URL?) {}
+    
+    func launchAd(launchAd: ZDLaunchAd, gifPlayFinish gifImage: UIImage?) {}
+}
 
 /// 广告类型枚举
 ///
@@ -178,9 +195,8 @@ public class ZDLaunchAd {
     /// - Parameter launchAdType: 图片或者是视频
     /// - Returns: 类别
     public static func setLaunchAdType(_ launchAdType: LaunchAdType) -> ZDLaunchAd.Type {
-        let launchAd = ZDLaunchAd.share
-        launchAd.launchAdType = launchAdType
-        return type(of: launchAd)
+        ZDLaunchAd.share.launchAdType = launchAdType
+        return type(of: ZDLaunchAd.share)
     }
     
     /// 设置启动图类型 默认是 image类型
@@ -189,9 +205,8 @@ public class ZDLaunchAd {
     /// - Returns: 类别
     @discardableResult
     public static func setSourceType(_ sourceType: SourceType) -> ZDLaunchAd.Type {
-        let launchAd = ZDLaunchAd.share
-        launchAd.sourceType = sourceType
-        return type(of: launchAd)
+        ZDLaunchAd.share.sourceType = sourceType
+        return type(of: ZDLaunchAd.share)
     }
     
     /// 设置广告页停留时间 默认是 3秒,请最后设置这个参数
@@ -200,9 +215,8 @@ public class ZDLaunchAd {
     /// - Returns: 类别
     @discardableResult
     public static func setWaitDataDuration(_ waitDataDuration: Int) -> ZDLaunchAd.Type {
-        let launchAd = ZDLaunchAd.share
-        launchAd.waitDataDuration = waitDataDuration
-        return type(of: launchAd)
+        ZDLaunchAd.share.waitDataDuration = waitDataDuration
+        return type(of: ZDLaunchAd.share)
     }
     
     /// 设置广告图配置
@@ -211,10 +225,9 @@ public class ZDLaunchAd {
     /// - Returns: 类别
     @discardableResult
     public static func setImageAdConfiguration(_ imageAdConfiguration: ZDLaunchImageAdConfiguration, delegate: ZDLaunchAdDelegate? = nil) -> ZDLaunchAd.Type {
-        let launchAd = ZDLaunchAd.share
-        launchAd.imageAdConfiguration = imageAdConfiguration
-        launchAd.delegate = delegate
-        return type(of: launchAd)
+        ZDLaunchAd.share.imageAdConfiguration = imageAdConfiguration
+        ZDLaunchAd.share.delegate = delegate
+        return type(of: ZDLaunchAd.share)
     }
     
     /// 设置广告视频配置
@@ -223,10 +236,9 @@ public class ZDLaunchAd {
     /// - Returns: 类别
     @discardableResult
     public static func setVideoAdConfiguration(_ videoAdConfiguration: ZDLaunchVideoAdConfiguration, delegate: ZDLaunchAdDelegate? = nil) -> ZDLaunchAd.Type {
-        let launchAd = ZDLaunchAd.share
-        launchAd.videoAdConfiguration = videoAdConfiguration
-        launchAd.delegate = delegate
-        return type(of: launchAd)
+        ZDLaunchAd.share.videoAdConfiguration = videoAdConfiguration
+        ZDLaunchAd.share.delegate = delegate
+        return type(of: ZDLaunchAd.share)
     }
     
     /// 设置代理
@@ -235,9 +247,8 @@ public class ZDLaunchAd {
     /// - Returns: 类别
     @discardableResult
     public static func setDelegate(_ delegate: ZDLaunchAdDelegate) -> ZDLaunchAd.Type {
-        let launchAd = ZDLaunchAd.share
-        launchAd.delegate = delegate
-        return type(of: launchAd)
+        ZDLaunchAd.share.delegate = delegate
+        return type(of: ZDLaunchAd.share)
     }
     
     /// 下载并缓存图片
@@ -254,7 +265,7 @@ public class ZDLaunchAd {
     /// - Parameters:
     ///   - urls: 地址
     ///   - completedCallback: 回调
-    public static func downloadAllVideoAndCache(urls: [URL], completedCallback: @escaping BatchDownLoadAndCacheCompletedCallback) {
+    public static func downloadAllVideoAndCache(urls: [URL], completedCallback: BatchDownLoadAndCacheCompletedCallback? = nil) {
         ZDLaunchAdDownloadManager.shared.downloadAllVideoAndCache(urls: urls, completedCallback: completedCallback)
     }
     
@@ -298,14 +309,14 @@ public class ZDLaunchAd {
         ZDLaunchAdCacheManager.clearDiskAllImageCache()
     }
     
-    /// 清楚指定视频缓存
+    /// 清除指定视频缓存
     ///
     /// - Parameter imageUrls: 地址数组
     public static func clearDiskCache(videoUrls: [URL]) {
         ZDLaunchAdCacheManager.clearDiskCache(videoUrls: videoUrls)
     }
     
-    /// 清楚指定外视频缓存
+    /// 清除指定外视频缓存
     ///
     /// - Parameter imageUrls: 地址数组
     public static func clearDiskCacheExcept(videoUrls: [URL]) {
@@ -320,7 +331,7 @@ public class ZDLaunchAd {
     /// 异步获取缓存大小
     ///
     /// - Parameter callback: 回调
-    public static func asyncDiskCache(callback: @escaping (Double) -> ()) {
+    public static func asyncDiskCache(callback: @escaping (Double) -> Void) {
         ZDLaunchAdCacheManager.asyncDiskCache(callback: callback)
     }
     
@@ -433,20 +444,20 @@ extension ZDLaunchAd {
         }
         
         //  是图片url
-        if !configuration.imageNameOrURLString.isEmpty && configuration.imageNameOrURLString.isUrlString {
+        if !configuration.imageNameOrURLString.isEmpty && configuration.imageNameOrURLString.isUrl {
             ZDLaunchAdCacheManager.asyncSaveImageUrl(configuration.imageNameOrURLString)
             
-            adImageView.expand.setImage(url: URL(string: configuration.imageNameOrURLString), placeholder: nil, gifImageCycleOnce: configuration.gifImageCycleOnce, options: configuration.imageOption, gifImageCycleFinish: {
+            adImageView.expand.setImage(url: URL(string: configuration.imageNameOrURLString), placeholder: configuration.placeholderAdImage, gifImageCycleOnce: configuration.gifImageCycleOnce, options: configuration.imageOption, gifImageCycleFinish: {
                 NotificationCenter.default.post(name: .ZDLaunchAdGIFImageCycleOnceFinish, object: nil, userInfo: ["imageNameOrURLString": configuration.imageNameOrURLString])
             }, progressCallback: { (total, current) in
-                
+                self.delegate?.launchAd(launchAd: self, downloadProgress: Double(current) / Double(total), total: total, current: current)
             }) { (image, data, url, error) in
                 
                 self.delegate?.launchAd(launchAd: self, imageDownoadFinish: image, imageData: data, url: url)
                 
                 if let realData = data, realData.imageFormat == .gif {
                     let gifImage = UIImage.gif(data: realData)
-                    //adImageView.image = gifImage
+                    
                     adImageView.playGif(data: realData, repeatCount: configuration.gifImageCycleOnce ? 1 : 0) {
                         if configuration.gifImageCycleOnce {
                             self.delegate?.launchAd(launchAd: self, gifPlayFinish: gifImage)
@@ -473,7 +484,6 @@ extension ZDLaunchAd {
                 
                 if data.imageFormat == .gif {
                     let gifImage = UIImage.gif(data: data)
-                    //adImageView.image = gifImage
                     adImageView.playGif(data: data, repeatCount: configuration.gifImageCycleOnce ? 1 : 0) {
                         if configuration.gifImageCycleOnce {
                             self.delegate?.launchAd(launchAd: self, gifPlayFinish: gifImage)
@@ -537,7 +547,7 @@ extension ZDLaunchAd {
         }
         
         //  网络视频
-        if !configuration.videoNameOrURLString.isEmpty && configuration.videoNameOrURLString.isUrlString {
+        if !configuration.videoNameOrURLString.isEmpty && configuration.videoNameOrURLString.isUrl {
             ZDLaunchAdCacheManager.asyncSaveVideoUrl(configuration.videoNameOrURLString)
             
             guard let url = URL(string: configuration.videoNameOrURLString) else {
@@ -566,7 +576,7 @@ extension ZDLaunchAd {
                 }
                 
                 ZDLaunchAdDownloadManager.shared.downloadVideo(url: url, progressCallback: { (total, current) in
-                    self.delegate?.launchAd(launchAd: self, videoDownloadProgress: Double(current) / Double(total), total: total, current: current)
+                    self.delegate?.launchAd(launchAd: self, downloadProgress: Double(current) / Double(total), total: total, current: current)
                 }) { (location, error) in
                     self.delegate?.launchAd(launchAd: self, videoDownloadFinish: location)
                 }
@@ -583,10 +593,11 @@ extension ZDLaunchAd {
         }else {
         //  本地视频
             if !configuration.videoNameOrURLString.isEmpty {
-                var pathUrl: URL!
-                guard let path = ZDLaunchAdCacheManager.videoPathWithFileName(configuration.videoNameOrURLString), let cachePathURL = URL(fileURLWithPath: path) as? URL else {
+                let pathUrl: URL!
+                guard let path = ZDLaunchAdCacheManager.videoPathWithFileName(configuration.videoNameOrURLString) else {
                     return
                 }
+                let cachePathURL = URL(fileURLWithPath: path)
                 
                 if !ZDLaunchAdCacheManager.checkVideoInCacheWithFileName(configuration.videoNameOrURLString) {
                     guard let bundleUrl = Bundle.main.url(forResource: configuration.videoNameOrURLString, withExtension: nil) else {
@@ -788,10 +799,8 @@ extension ZDLaunchAd {
     /// 清除除了启动页之外的子控件
     private func removeSubviewsExpectLaunchAdImageView() {
         guard let realWindow = window else { return }
-        for subview in realWindow.subviews {
-            if !(subview is ZDLaunchImageView) {
-                subview.removeFromSuperview()
-            }
+        for subview in realWindow.subviews where !(subview is ZDLaunchImageView) {
+            subview.removeFromSuperview()
         }
     }
     

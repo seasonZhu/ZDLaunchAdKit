@@ -50,9 +50,7 @@ extension ZDLaunchAdDownloadManager {
     ///   - completedCallback: 图片完成回调
     func downloadImage(url: URL, progressCallback: DownloadProgressCallback? = nil, completedCallback: DownloadImageCompletedCallback? = nil) {
         let key = url.absoluteString.md5
-        if downloadDict.contains(where: { (dictKey, value) -> Bool in
-            return key == dictKey
-        }) {
+        if downloadDict.contains(where: { (dictKey, value) -> Bool in return key == dictKey }) {
             return
         }
         
@@ -76,9 +74,9 @@ extension ZDLaunchAdDownloadManager {
                     return
                 }
                 
-                ZDLaunchAdCacheManager.asyncSaveImageData(realData, to: url, callback: { (result, url) in
+                ZDLaunchAdCacheManager.asyncSaveImageData(realData, to: url) { (result, url) in
                     callback(result, url)
-                })
+                }
             }
         }
     }
@@ -125,9 +123,7 @@ extension ZDLaunchAdDownloadManager {
     ///   - completedCallback: 视频完成回调
     func downloadVideo(url: URL, progressCallback: DownloadProgressCallback? = nil, completedCallback: DownloadVideoCompletedCallback? = nil) {
         let key = url.absoluteString.md5
-        if downloadDict.contains(where: { (dictKey, value) -> Bool in
-            return key == dictKey
-        }) {
+        if downloadDict.contains(where: { (dictKey, value) -> Bool in return key == dictKey }) {
             return
         }
         
@@ -151,9 +147,9 @@ extension ZDLaunchAdDownloadManager {
                     return
                 }
                 
-                ZDLaunchAdCacheManager.asyncSaveVideoAtLocation(realLoaction, url: url, callback: { (result, callbackUrl) in
+                ZDLaunchAdCacheManager.asyncSaveVideoAtLocation(realLoaction, url: url) { (result, callbackUrl) in
                     callback(result, callbackUrl)
-                })
+                }
             }
         }
     }

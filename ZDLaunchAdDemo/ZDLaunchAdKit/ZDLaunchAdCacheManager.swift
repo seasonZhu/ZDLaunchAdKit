@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias SaveCompletionCallback = (Bool, URL) -> ()
+typealias SaveCompletionCallback = (Bool, URL) -> Void
 
 /// 缓存与文件管理器
 class ZDLaunchAdCacheManager {
@@ -19,7 +19,7 @@ class ZDLaunchAdCacheManager {
     /// 通过传递的路径判断 文件或者文件夹, 如果不存在就进行创建, 这个方法一定要调用呀
     ///
     /// - Parameter path: 路径
-    class func checkDirectory(path: String = defaultPath) {
+    static func checkDirectory(path: String = defaultPath) {
         let fileManager = FileManager.default
         
         //  是否是文件夹
@@ -44,7 +44,7 @@ class ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 图片缓存 图片数据缓存
-    class func getCacheImageWithUrl(_ url: URL?) -> (cacheImage: UIImage?, cacheData: Data?) {
+    static func getCacheImageWithUrl(_ url: URL?) -> (cacheImage: UIImage?, cacheData: Data?) {
         if url == nil {
             return (nil, nil)
         }
@@ -60,7 +60,7 @@ class ZDLaunchAdCacheManager {
     ///   - data: 数据
     ///   - url: 通过url去生成文件名
     /// - Returns: 保存是否成功
-    private class func saveImageData(_ data: Data, by url: URL) -> Bool {
+    private static func saveImageData(_ data: Data, by url: URL) -> Bool {
         let path = launchAdCachePath + "/" +  keyWithUrl(url)
         let result = FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
         if !result {
@@ -75,7 +75,13 @@ class ZDLaunchAdCacheManager {
     ///   - data: 数据
     ///   - url: 通过url去生成文件名
     ///   - callback: 回调
-    class func asyncSaveImageData(_ data: Data, to url: URL, callback: SaveCompletionCallback? = nil) {
+    static func asyncSaveImageData(_ data: Data?, to url: URL, callback: SaveCompletionCallback? = nil) {
+        
+        guard let data = data else {
+            callback?(false, url)
+            return
+        }
+        
         DispatchQueue.global().async {
             let result = saveImageData(data, by: url)
             DispatchQueue.main.async {
@@ -90,7 +96,7 @@ class ZDLaunchAdCacheManager {
     ///   - location: 所在的临时文件
     ///   - url: 通过url去生成文件名,进而保存到目标文件中
     /// - Returns: 保存是否成功
-    private class func saveVideoAtLocation(_ location: URL, url: URL) -> Bool {
+    private static func saveVideoAtLocation(_ location: URL, url: URL) -> Bool {
         let savePath = launchAdCachePath + "/" +  videoNameWithUrl(url)
         let savePathUrl = URL(fileURLWithPath: savePath)
         do {
@@ -108,7 +114,7 @@ class ZDLaunchAdCacheManager {
     ///   - location: 所在的临时文件
     ///   - url: 通过url去生成文件名,进而保存到目标文件中
     ///   - callback: 回调
-    class func asyncSaveVideoAtLocation(_ location: URL, url: URL, callback: SaveCompletionCallback? = nil) {
+    static func asyncSaveVideoAtLocation(_ location: URL, url: URL, callback: SaveCompletionCallback? = nil) {
         DispatchQueue.global().async {
             let result = saveVideoAtLocation(location, url: url)
             DispatchQueue.main.async {
@@ -121,7 +127,7 @@ class ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 本地缓存地址
-    class func getCacheVideoFileUrlWithUrl(_ url: URL) -> URL? {
+    static func getCacheVideoFileUrlWithUrl(_ url: URL) -> URL? {
         let savePath = launchAdCachePath + "/" + videoNameWithUrl(url)
         if FileManager.default.fileExists(atPath: savePath) {
             let path = URL(fileURLWithPath: savePath)
@@ -134,7 +140,7 @@ class ZDLaunchAdCacheManager {
 extension ZDLaunchAdCacheManager {
     
     /// 缓存文件夹路径
-    class var launchAdCachePath: String {
+    static var launchAdCachePath: String {
         let path = NSHomeDirectory() + "/Library/ZDLaunchAdCache"
         return path
     }
@@ -143,7 +149,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 路径
-    class func imagePathWithUrl(_ url: URL?) -> String? {
+    static func imagePathWithUrl(_ url: URL?) -> String? {
         guard let unwrappedUrl = url else {
             return nil
         }
@@ -154,7 +160,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 路径
-    class func videoPathWithUrl(_ url: URL?) -> String? {
+    static func videoPathWithUrl(_ url: URL?) -> String? {
         guard let unwrappedUrl = url else {
             return nil
         }
@@ -165,7 +171,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter fileName: 文件名
     /// - Returns: 路径
-    class func videoPathWithFileName(_ fileName: String?) -> String? {
+    static func videoPathWithFileName(_ fileName: String?) -> String? {
         guard let name = fileName else {
             return nil
         }
@@ -179,7 +185,7 @@ extension ZDLaunchAdCacheManager {
     ///   - urlString: url字符串
     ///   - isVideo: 是否是视频
     /// - Returns: 路径
-    class func getPath(urlString: String, isVideo: Bool = false)  -> String? {
+    static func getPath(urlString: String, isVideo: Bool = false) -> String? {
         if urlString.isEmpty {
             return nil
         }
@@ -202,7 +208,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 是否有缓存
-    class func checkImageInCacheWithUrl(_ url: URL) -> Bool {
+    static func checkImageInCacheWithUrl(_ url: URL) -> Bool {
         guard let path = imagePathWithUrl(url) else {
             return false
         }
@@ -213,7 +219,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 是否有缓存
-    class func checkVideoInCacheWithUrl(_ url: URL) -> Bool {
+    static func checkVideoInCacheWithUrl(_ url: URL) -> Bool {
         guard let path = videoPathWithUrl(url) else {
             return false
         }
@@ -224,7 +230,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter fileName: 文件名
     /// - Returns: 是否有缓存
-    class func checkVideoInCacheWithFileName(_ fileName: String) -> Bool {
+    static func checkVideoInCacheWithFileName(_ fileName: String) -> Bool {
         guard  let path = videoPathWithFileName(fileName) else {
             return false
         }
@@ -238,7 +244,7 @@ extension ZDLaunchAdCacheManager {
     /// 异步通过UserDefaults保存当前下载图片的url
     ///
     /// - Parameter url: 网址
-    class func asyncSaveImageUrl(_ url: String?) {
+    static func asyncSaveImageUrl(_ url: String?) {
         guard let unwrappedUrl = url else {
             return
         }
@@ -251,14 +257,14 @@ extension ZDLaunchAdCacheManager {
     /// 通过UserDefaults获取当前下载图片的url
     ///
     /// - Returns: 网址
-    class func getCacheImageUrl() -> String? {
+    static func getCacheImageUrl() -> String? {
         return UserDefaults.standard.object(forKey: ZDCacheImageUrlStringKey) as? String
     }
     
     /// 异步通过UserDefaults保存当前下载视频的url
     ///
     /// - Parameter url: 网址
-    class func asyncSaveVideoUrl(_ url: String?) {
+    static func asyncSaveVideoUrl(_ url: String?) {
         guard let unwrappedUrl = url else {
             return
         }
@@ -271,7 +277,7 @@ extension ZDLaunchAdCacheManager {
     /// 通过UserDefaults获取当前下载视频的url
     ///
     /// - Returns: 网址
-    class func getCacheVideoUrl() -> String? {
+    static func getCacheVideoUrl() -> String? {
         return UserDefaults.standard.object(forKey: ZDCacheVideoUrlStringKey) as? String
     }
 }
@@ -279,7 +285,7 @@ extension ZDLaunchAdCacheManager {
 extension ZDLaunchAdCacheManager {
     
     /// 清理沙盒中的所有缓存
-    class func clearDiskCache() {
+    static func clearDiskCache() {
         DispatchQueue.global().async {
             do {
                 try FileManager.default.removeItem(atPath: launchAdCachePath)
@@ -293,7 +299,7 @@ extension ZDLaunchAdCacheManager {
     /// 通过usl数组 清理沙盒中的图片缓存
     ///
     /// - Parameter imageUrls: 图片url数组
-    class func clearDiskCache(imageUrls: [URL]) {
+    static func clearDiskCache(imageUrls: [URL]) {
         if imageUrls.count == 0 {
             return
         }
@@ -313,7 +319,7 @@ extension ZDLaunchAdCacheManager {
     /// 除传入的usl数组外 其他的图片进行删除
     ///
     /// - Parameter imageUrls: 图片url数组
-    class func clearDiskCacheExcept(imageUrls: [URL]) {
+    static func clearDiskCacheExcept(imageUrls: [URL]) {
         DispatchQueue.global().async {
             let allFilePahts = allFilePathWithDirectoryPath(launchAdCachePath)
             let exceptImagePahts = filePathsWithUrls(imageUrls)
@@ -331,7 +337,7 @@ extension ZDLaunchAdCacheManager {
     }
     
     /// 清除所有的图片缓存
-    class func clearDiskAllImageCache() {
+    static func clearDiskAllImageCache() {
         DispatchQueue.global().async {
             let allFilePahts = allFilePathWithDirectoryPath(launchAdCachePath)
             for filePath in allFilePahts {
@@ -350,7 +356,7 @@ extension ZDLaunchAdCacheManager {
     /// 通过视频的url数组 删除沙盒中的视频
     ///
     /// - Parameter videoUrls: 视频url数组
-    class func clearDiskCache(videoUrls: [URL]) {
+    static func clearDiskCache(videoUrls: [URL]) {
         if videoUrls.count == 0 {
             return
         }
@@ -370,7 +376,7 @@ extension ZDLaunchAdCacheManager {
     /// 除传入的usl数组外 其他的视频进行删除
     ///
     /// - Parameter imageUrls: 视频url数组
-    class func clearDiskCacheExcept(videoUrls: [URL]) {
+    static func clearDiskCacheExcept(videoUrls: [URL]) {
         DispatchQueue.global().async {
             let allFilePahts = allFilePathWithDirectoryPath(launchAdCachePath)
             let exceptImagePahts = filePathsWithUrls(videoUrls, isVideo: true)
@@ -388,7 +394,7 @@ extension ZDLaunchAdCacheManager {
     }
     
     /// 清除所有的视频缓存
-    class func clearDiskAllVideoCache() {
+    static func clearDiskAllVideoCache() {
         DispatchQueue.global().async {
             let allFilePahts = allFilePathWithDirectoryPath(launchAdCachePath)
             for filePath in allFilePahts {
@@ -407,7 +413,7 @@ extension ZDLaunchAdCacheManager {
     /// 计算所有缓存的大小
     ///
     /// - Returns: 返回bytes值
-    class func diskCacheSize() -> Double {
+    static func diskCacheSize() -> Double {
         let directoryPath = launchAdCachePath
         var isDir: ObjCBool = false
         var total: UInt64 = 0
@@ -435,7 +441,7 @@ extension ZDLaunchAdCacheManager {
     /// 异步计算缓存大小
     ///
     /// - Parameter callback: 回调
-    class func asyncDiskCache(callback: @escaping (Double) -> ()) {
+    static func asyncDiskCache(callback: @escaping (Double) -> Void) {
         DispatchQueue.global().async {
             let result = diskCacheSize()
             DispatchQueue.main.async {
@@ -450,7 +456,7 @@ extension ZDLaunchAdCacheManager {
     ///   - urls: 网络路径数组
     ///   - isVideo: 是否是视频
     /// - Returns: 文件所在沙盒的路径数组
-    class func filePathsWithUrls(_ urls: [URL], isVideo: Bool = false) -> [String] {
+    static func filePathsWithUrls(_ urls: [URL], isVideo: Bool = false) -> [String] {
         var filePaths = [String]()
         
         for url in urls {
@@ -469,7 +475,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter directoryPath: 路径
     /// - Returns: 文件路径数组
-    class func allFilePathWithDirectoryPath(_ directoryPath: String) -> [String] {
+    static func allFilePathWithDirectoryPath(_ directoryPath: String) -> [String] {
         var array = [String]()
         do {
             let tempArray = try FileManager.default.contentsOfDirectory(atPath: directoryPath)
@@ -494,7 +500,7 @@ extension ZDLaunchAdCacheManager {
     /// 创建基本文件夹
     ///
     /// - Parameter path: 文件夹所在的路径
-    class func createBaseDirectory(at path: String) {
+    static func createBaseDirectory(at path: String) {
         do {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             addDoNotBackupAttribute(path: path)
@@ -503,7 +509,7 @@ extension ZDLaunchAdCacheManager {
         }
     }
     
-    class func addDoNotBackupAttribute(path: String) {
+    static func addDoNotBackupAttribute(path: String) {
         var url = URL.init(fileURLWithPath: path)
         url.setTemporaryResourceValue(true, forKey: URLResourceKey.isExcludedFromBackupKey)
         /*
@@ -522,7 +528,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 网址字符串的md5 + 后缀 .mp4
-    class func videoNameWithUrl(_ url: URL) -> String {
+    static func videoNameWithUrl(_ url: URL) -> String {
         return keyWithUrl(url) + ".mp4"
     }
     
@@ -530,7 +536,7 @@ extension ZDLaunchAdCacheManager {
     ///
     /// - Parameter url: 网址
     /// - Returns: 网址字符串的md5
-    class func keyWithUrl(_ url: URL) -> String {
+    static func keyWithUrl(_ url: URL) -> String {
         return url.absoluteString.md5
     }
 }

@@ -76,7 +76,7 @@ public class ZDLaunchVideoAdConfiguration: ZDLaunchAdConfiguration {
     /// video本地名或网络链接URL string
     public var videoNameOrURLString = ""
     
-    /// 视频缩放模式(default AVLayerVideoGravityResizeAspectFill)
+    /// 视频缩放模式(default .resizeAspectFill)
     public var videoGravity: AVLayerVideoGravity = .resizeAspectFill
     
     /// 设置视频是否只循环播放一次(true:只播放一次,false循环播放,default true)
