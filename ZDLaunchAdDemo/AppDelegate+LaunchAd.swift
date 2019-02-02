@@ -97,7 +97,7 @@ extension AppDelegate {
         videoAdConfiguration.isVideoCycleOnce = false
         videoAdConfiguration.duration = 10
         videoAdConfiguration.showEnterForeground = false
-        videoAdConfiguration.videoNameOrURLString = "http://download.3g.joy.cn/video/236/60236853/1450837945724_hd.mp4"//"http://yun.it7090.com/video/XHLaunchAd/video02.mp4" // 这个视频地址被失效了,所以看不到网络广告视频 随便搞了一个视频 先看着吧
+        videoAdConfiguration.videoNameOrURLString = "https://video.golem.de/files/1/1/20637/wrkw0718-sd.mp4"//"http://yun.it7090.com/video/XHLaunchAd/video02.mp4"//"http://download.3g.joy.cn/video/236/60236853/1450837945724_hd.mp4"//"http://yun.it7090.com/video/XHLaunchAd/video02.mp4" // 这个视频地址被失效了,所以看不到网络广告视频 随便搞了一个视频 先看着吧
         videoAdConfiguration.placeholderAdImage = UIImage(named: "placeholderAdImage")
         videoAdConfiguration.showFinishAnimate = .flipFromLeft
         videoAdConfiguration.videoGravity = .resize

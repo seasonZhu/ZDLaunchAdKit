@@ -81,7 +81,7 @@ class ZDLaunchAdVideoView: UIImageView {
             //  注册是否循环播放
             NotificationCenter.default.addObserver(self, selector: #selector(runLoopTheMovie(_ :)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     
-            try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+            try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [])
             try? AVAudioSession.sharedInstance().setActive(true)
             
             guard let avlayer = playerLayer else { return }
